@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 1909119885}
   - component: {fileID: 1909119886}
   - component: {fileID: 1909119884}
+  - component: {fileID: 1909119887}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCount: 10
   testGO: {fileID: 8118485388253061501, guid: c59e979910cfa67489a3078495bc1c17, type: 3}
-  delayBtwSpawns: 0
+  delayBtwSpawns: 1
 --- !u!4 &1909119885
 Transform:
   m_ObjectHideFlags: 0
@@ -268,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {x: -11.5, y: -5, z: 0}
+  - {x: -10.5, y: -5, z: 0}
   - {x: -9, y: 3, z: 0}
   - {x: -6, y: 3, z: 0}
   - {x: -4, y: -3, z: 0}
@@ -277,4 +278,18 @@ MonoBehaviour:
   - {x: 4, y: 3, z: 0}
   - {x: 6, y: -3, z: 0}
   - {x: 9, y: -3, z: 0}
-  - {x: 11.2, y: 5, z: 0}
+  - {x: 10.5, y: 5, z: 0}
+--- !u!114 &1909119887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909119883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11871ff95436d1649bab71fd16c10312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8118485388253061501, guid: c59e979910cfa67489a3078495bc1c17, type: 3}
+  poolSize: 10
