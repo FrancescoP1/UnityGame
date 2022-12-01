@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5976546991963248173}
   - component: {fileID: 3366117013839518955}
   - component: {fileID: 4858709325784284123}
-  - component: {fileID: 4185330416688500600}
+  - component: {fileID: 3843679842848863779}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -172,7 +172,7 @@ MonoBehaviour:
   barPosition: {fileID: 790620538776716338, guid: 3a475ce5b0d3e1a4f8c66dfe18c20223, type: 3}
   initialHealth: 60
   maxHealth: 60
---- !u!114 &4185330416688500600
+--- !u!114 &3843679842848863779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6550982799663744328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9975100141d06e442abc827b7179b972, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bd17d0a2b3d3bc4f835cc0dcaa87b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 0.5
+  MoveSpeed: 0.9

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2073495925132758136}
   - component: {fileID: -354995597951839781}
   - component: {fileID: 2896584120166473634}
-  - component: {fileID: 2248720300683550213}
+  - component: {fileID: 4023753345549444762}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -172,7 +172,7 @@ MonoBehaviour:
   barPosition: {fileID: 790620538776716338, guid: 3a475ce5b0d3e1a4f8c66dfe18c20223, type: 3}
   initialHealth: 30
   maxHealth: 30
---- !u!114 &2248720300683550213
+--- !u!114 &4023753345549444762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838371868749552769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9975100141d06e442abc827b7179b972, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bd17d0a2b3d3bc4f835cc0dcaa87b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1.5
+  MoveSpeed: 2
