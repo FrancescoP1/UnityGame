@@ -1,17 +1,21 @@
+using System;
+using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private float MoveSpeed = 1;
     
     private GameObject Spawner;
-
     private SpriteRenderer _spriteRenderer;
     private Vector3 CurrentPointPosition, _lastPointPosition;
     private Waypoint Waypoints;
     private int _currentWaypointIndex;
+
+    public static Action<Enemy> OnEndReached;
+
 
     private void Move() 
     {
@@ -44,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void EndPointReached()
     {
-        // OnEndReached?.Invoke(this);
+        OnEndReached?.Invoke(this);
         ObjectPooler.ReturnToPool(gameObject);
     }
 

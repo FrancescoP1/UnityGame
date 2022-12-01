@@ -31,7 +31,7 @@ public class ObjectPooler : MonoBehaviour
         GameObject newInstance = Instantiate(prefab);
         newInstance.transform.SetParent(_poolContainer.transform);
         newInstance.SetActive(false);
-        newInstance.AddComponent(typeof(EnemyMovement));
+        newInstance.AddComponent(typeof(Enemy));
         return newInstance;
     }
 
