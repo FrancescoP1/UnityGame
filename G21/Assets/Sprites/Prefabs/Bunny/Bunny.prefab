@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8441008671002277802}
   - component: {fileID: 5088082115528439896}
   - component: {fileID: 5228899410860085624}
-  - component: {fileID: 264407360506699076}
+  - component: {fileID: 4024935525193692229}
   m_Layer: 0
   m_Name: Bunny
   m_TagString: Untagged
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6335582863558142731, guid: 070a0fea8d7c56647b4a4a1bf7feb63e, type: 3}
+  m_Sprite: {fileID: 4262997996146482006, guid: 5c785240b2018244ab29684a4434bd26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   barPosition: {fileID: 790620538776716338, guid: 3a475ce5b0d3e1a4f8c66dfe18c20223, type: 3}
   initialHealth: 25
   maxHealth: 25
---- !u!114 &264407360506699076
+--- !u!114 &4024935525193692229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2909423898313160212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9975100141d06e442abc827b7179b972, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bd17d0a2b3d3bc4f835cc0dcaa87b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
+  MoveSpeed: 3

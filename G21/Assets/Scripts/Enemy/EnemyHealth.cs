@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public static Action<EnemyMovement> OnEnemyKilled;
-    public static Action<EnemyMovement> OnEnemyHit;
+    public static Action<Enemy> OnEnemyKilled;
+    public static Action<Enemy> OnEnemyHit;
 
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Transform barPosition;
@@ -15,14 +15,14 @@ public class EnemyHealth : MonoBehaviour
     public float CurrentHealth { get; set; }
 
     private Image _healthBar;
-    private EnemyMovement _enemy;
+    private Enemy _enemy;
 
     private void Start()
     {
         CreateHealthBar();
         CurrentHealth = initialHealth;
 
-        _enemy = GetComponent<EnemyMovement>();
+        _enemy = GetComponent<Enemy>();
     }
 
     // Update is called once per frame
