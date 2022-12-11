@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
 
     private Image _healthBar;
     private Enemy _enemy;
+    private EnemyFX _enemyFX;
 
     private void Start()
     {
@@ -23,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
         CurrentHealth = initialHealth;
 
         _enemy = GetComponent<Enemy>();
+        _enemyFX = GetComponent<EnemyFX>();
     }
 
     // Update is called once per frame
@@ -53,5 +57,11 @@ public class EnemyHealth : MonoBehaviour
         }
         else
             OnEnemyHit?.Invoke(_enemy);
+    }
+
+    public void ResetHealth()
+    {
+        CurrentHealth = initialHealth;
+        _healthBar.fillAmount = 1f;
     }
 }

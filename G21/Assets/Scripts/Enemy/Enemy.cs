@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float MoveSpeed = 1;
+    [SerializeField] private float MoveSpeed = 1f;
     
     private GameObject Spawner;
     private SpriteRenderer _spriteRenderer;
@@ -15,7 +15,35 @@ public class Enemy : MonoBehaviour
     private int _currentWaypointIndex;
 
     public static Action<Enemy> OnEndReached;
+   // private EnemyHealth _enemyHealth;
 
+    public float moveSpeed { get; set; }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+       // _enemyHealth = GetComponent<EnemyHealth>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+       // EnemyHealth = GetComponent<EnemyHealth>();
+
+        moveSpeed = MoveSpeed;
+
+        _currentWaypointIndex = 0;
+        CurrentPointPosition =  Waypoints.Points[_currentWaypointIndex];
+        transform.position = CurrentPointPosition;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        Rotate();
+        if (CurrentPointPositionReached())
+        {
+            UpdateCurrentPointIndex();
+        }
+    }
 
     private void Move() 
     {
@@ -46,12 +74,6 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-    private void EndPointReached()
-    {
-        OnEndReached?.Invoke(this);
-        ObjectPooler.ReturnToPool(gameObject);
-    }
-
     private void UpdateCurrentPointIndex()
     {
         int lastWaypointIndex = Waypoints.Points.Length - 1;
@@ -66,6 +88,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void EndPointReached()
+    {
+        OnEndReached?.Invoke(this);
+        ObjectPooler.ReturnToPool(gameObject);
+    }
+
     private void Awake() 
     {
         Spawner =  GameObject.Find("Spawner");
@@ -74,22 +102,13 @@ public class Enemy : MonoBehaviour
         
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void StopMovement()
     {
-        _currentWaypointIndex = 0;
-        CurrentPointPosition =  Waypoints.Points[_currentWaypointIndex];
-        transform.position = CurrentPointPosition;
+        moveSpeed = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResumeMovement()
     {
-        Move();
-        Rotate();
-        if (CurrentPointPositionReached())
-        {
-            UpdateCurrentPointIndex();
-        }
+        moveSpeed = MoveSpeed;
     }
 }
