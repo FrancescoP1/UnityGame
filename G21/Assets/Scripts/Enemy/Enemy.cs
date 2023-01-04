@@ -1,58 +1,73 @@
 using System;
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float MoveSpeed = 1f;
-    
-    private GameObject Spawner;
-    private SpriteRenderer _spriteRenderer;
-    private Vector3 CurrentPointPosition, _lastPointPosition;
-    private Waypoint Waypoints;
-    private int _currentWaypointIndex;
-
     public static Action<Enemy> OnEndReached;
-   // private EnemyHealth _enemyHealth;
+    
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private int deathCoinReward = 2;
 
-    public float moveSpeed { get; set; }
+    public int DeathCoinReward { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
+    public float MoveSpeed { get; set; }
+
+
+    public Waypoint Waypoint;
+
+    public EnemyHealth EnemyHealth { get; set; }
+    
+    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(_currentWaypointIndex);
+    
+    private int _currentWaypointIndex;
+    private Vector3 _lastPointPosition;
+    
+    private EnemyHealth _enemyHealth;
+    private SpriteRenderer _spriteRenderer;
+    
+    private void Start()
     {
-
-       // _enemyHealth = GetComponent<EnemyHealth>();
+        _enemyHealth = GetComponent<EnemyHealth>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-       // EnemyHealth = GetComponent<EnemyHealth>();
-
-        moveSpeed = MoveSpeed;
-
+        EnemyHealth = GetComponent<EnemyHealth>();
+        
         _currentWaypointIndex = 0;
-        CurrentPointPosition =  Waypoints.Points[_currentWaypointIndex];
-        transform.position = CurrentPointPosition;
+        MoveSpeed = moveSpeed;
+        _lastPointPosition = transform.position;
+        DeathCoinReward = deathCoinReward;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Move();
         Rotate();
+        
         if (CurrentPointPositionReached())
         {
             UpdateCurrentPointIndex();
         }
     }
-
-    private void Move() 
+    
+    private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, CurrentPointPosition, MoveSpeed * Time.deltaTime);
     }
 
+    public void StopMovement()
+    {
+        MoveSpeed = 0f;
+    }
+
+    public void ResumeMovement()
+    {
+        MoveSpeed = moveSpeed;
+    }
+
     private void Rotate()
     {
-        if (CurrentPointPosition.x > _lastPointPosition.x) 
+        if (CurrentPointPosition.x > _lastPointPosition.x)
         {
             _spriteRenderer.flipX = false;
         }
@@ -61,7 +76,7 @@ public class Enemy : MonoBehaviour
             _spriteRenderer.flipX = true;
         }
     }
-
+    
     private bool CurrentPointPositionReached()
     {
         float distanceToNextPointPosition = (transform.position - CurrentPointPosition).magnitude;
@@ -76,11 +91,10 @@ public class Enemy : MonoBehaviour
 
     private void UpdateCurrentPointIndex()
     {
-        int lastWaypointIndex = Waypoints.Points.Length - 1;
+        int lastWaypointIndex = Waypoint.Points.Length - 1;
         if (_currentWaypointIndex < lastWaypointIndex)
         {
             _currentWaypointIndex++;
-            CurrentPointPosition = Waypoints.Points[_currentWaypointIndex];
         }
         else
         {
@@ -91,24 +105,12 @@ public class Enemy : MonoBehaviour
     private void EndPointReached()
     {
         OnEndReached?.Invoke(this);
+        _enemyHealth.ResetHealth();
         ObjectPooler.ReturnToPool(gameObject);
     }
 
-    private void Awake() 
+    public void ResetEnemy()
     {
-        Spawner =  GameObject.Find("Spawner");
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        Waypoints = Spawner.GetComponent<Waypoint>();
-        
-    }
-
-    public void StopMovement()
-    {
-        moveSpeed = 0f;
-    }
-
-    public void ResumeMovement()
-    {
-        moveSpeed = MoveSpeed;
+        _currentWaypointIndex = 0;
     }
 }

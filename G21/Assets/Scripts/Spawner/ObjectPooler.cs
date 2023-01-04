@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-
     [SerializeField] private GameObject prefab;
     [SerializeField] private int poolSize = 10;
-
     private List<GameObject> _pool;
     private GameObject _poolContainer;
 
@@ -18,7 +16,6 @@ public class ObjectPooler : MonoBehaviour
         _poolContainer = new GameObject($"Pool - {prefab.name}");
         CreatePooler();
     }
-
     private void CreatePooler()
     {
         for (int i = 0; i < poolSize; i++)
@@ -26,16 +23,13 @@ public class ObjectPooler : MonoBehaviour
             _pool.Add(CreateInstance());
         }
     }
-
     private GameObject CreateInstance()
     {
         GameObject newInstance = Instantiate(prefab);
         newInstance.transform.SetParent(_poolContainer.transform);
         newInstance.SetActive(false);
-        // newInstance.AddComponent(typeof(Enemy));
         return newInstance;
     }
-
     public GameObject GetInstanceFromPool()
     {
         for (int i = 0; i < _pool.Count; i++)
@@ -47,12 +41,10 @@ public class ObjectPooler : MonoBehaviour
         }
         return CreateInstance();
     }
-
     public static void ReturnToPool(GameObject instance)
     {
         instance.SetActive(false);
     }
-
     public static IEnumerator ReturnToPoolWithDelay(GameObject instance, float delay)
     {
         yield return new WaitForSeconds(delay);

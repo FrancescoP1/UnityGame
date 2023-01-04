@@ -12,10 +12,10 @@ public class EnemyFX : MonoBehaviour
 
     private void Start()
     {
-        _enemy =  GetComponent<Enemy>();
+        _enemy = GetComponent<Enemy>();
     }
 
-    public void EnemyHit(Enemy enemy, float damage) 
+    public void EnemyHit(Enemy enemy, float damage)
     {
         if (_enemy == enemy)
         {
@@ -28,15 +28,14 @@ public class EnemyFX : MonoBehaviour
             newInstance.SetActive(true);
         }
     }
-
+    
     private void OnEnable()
     {
-       // Projectile.OnEnemyHit += EnemyHit;
+        // Projectile.OnEnemyHit += EnemyHit;
     }
 
     private void OnDisable()
     {
-        //Projectile.OnEnemyHit -= EnemyHit;
-    }    
-
+        // Projectile.OnEnemyHit -= EnemyHit;
+    }
 }

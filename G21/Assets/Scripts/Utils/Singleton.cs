@@ -2,28 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// public class DamageTextManager : Singleton<DamageTextManager>
 public class Singleton<T> : MonoBehaviour where T : Component
 {
-    private static T _instance;
+    private static T instance;
     public static T Instance
     {
         get
         {
-            if (_instance == null)
+            if (instance == null)
             {
-                _instance = FindObjectOfType<T>();
-                if (_instance == null)
+                instance = FindObjectOfType<T>();
+                if (instance == null)
                 {
-                    GameObject newGO = new GameObject();
-                    _instance = newGO.AddComponent<T>();
+                    GameObject newInstance = new GameObject();
+                    instance = newInstance.AddComponent<T>();
                 }
             }
-            return _instance;
+
+            return instance;
         }
     }
 
-    protected virtual void Awake()
+    public void Awake()
     {
-        _instance = this as T;
+        instance = this as T;
     }
 }
