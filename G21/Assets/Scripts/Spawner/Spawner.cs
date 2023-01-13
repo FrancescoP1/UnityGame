@@ -92,15 +92,11 @@ public class Spawner : MonoBehaviour
 
     private ObjectPooler GetPooler()
     {
-        // int currentWave = LevelManager.Instance.CurrentWave;
-        // if (currentWave <= 1) // 1- 10
-        // {
-        //     return enemyWave1Pooler;
-        // }
-
-
-        
-
+        int currentWave = LevelManager.Instance.CurrentWave;
+        if (currentWave <= 1) // 1- 10
+        {
+            return enemyWave1Pooler;
+        }
 
         return null;
     }
