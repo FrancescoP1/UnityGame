@@ -32,6 +32,7 @@ public class Node : MonoBehaviour
     }
     public void SelectTurret()
     {
+        Debug.Log("ceva");
         OnNodeSelected?.Invoke(this);
         if (!IsEmpty())
         {

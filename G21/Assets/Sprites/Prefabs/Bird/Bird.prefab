@@ -47,9 +47,10 @@ GameObject:
   - component: {fileID: 4023753345549444762}
   - component: {fileID: 2896584120166473634}
   - component: {fileID: -8275491543955487995}
+  - component: {fileID: 4633664218998059087}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,6 +235,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDamageSpawnPosition: {fileID: 1125268606220350343}
+--- !u!114 &4633664218998059087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838371868749552769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c777f2ca29ec74da9b0ce702d3cda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticles: {fileID: 119968, guid: e73000b12fb76244cbffd6abbf8bb6e4, type: 3}
 --- !u!1 &4001410150482830322
 GameObject:
   m_ObjectHideFlags: 0
