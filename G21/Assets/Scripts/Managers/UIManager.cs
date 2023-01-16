@@ -10,6 +10,7 @@ public class UIManager : Singleton<UIManager>
     [Header("Panels")]
     [SerializeField] private GameObject turretShopPanel;
     [SerializeField] private GameObject nodeUIPanel;
+    [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject winPanel;
 
@@ -17,11 +18,19 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI upgradeText;
     [SerializeField] private TextMeshProUGUI sellText;
     [SerializeField] private TextMeshProUGUI turretLevelText;
+    [SerializeField] private TextMeshProUGUI totalCoinsText;
+    [SerializeField] private TextMeshProUGUI lifesText;
+    [SerializeField] private TextMeshProUGUI currentWaveText;
     [SerializeField] private TextMeshProUGUI gameOverTotalCoinsText;
     
     private Node _currentNodeSelected;
 
-
+    private void Update()
+    {
+        totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
+        lifesText.text = LevelManager.Instance.TotalLives.ToString();
+        currentWaveText.text = "Wave "+LevelManager.Instance.CurrentWave;
+    }
 
     public void SlowTime()
     {
@@ -60,7 +69,10 @@ public class UIManager : Singleton<UIManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
-
+    public void OpenAchievementPanel(bool status)
+    {
+        achievementPanel.SetActive(status);
+    }
     
     public void CloseTurretShopPanel()
     {
