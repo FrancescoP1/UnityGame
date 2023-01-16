@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -31,11 +31,11 @@ public class EnemyFX : MonoBehaviour
     
     private void OnEnable()
     {
-        // Projectile.OnEnemyHit += EnemyHit;
+        Projectile.OnEnemyHit += EnemyHit;
     }
 
     private void OnDisable()
     {
-        // Projectile.OnEnemyHit -= EnemyHit;
+        Projectile.OnEnemyHit -= EnemyHit;
     }
 }

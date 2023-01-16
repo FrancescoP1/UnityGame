@@ -26,7 +26,7 @@ public class AudioManager : Singleton<AudioManager>
         GameObject soundGO = new GameObject("Sound");
         AudioSource audioSource = soundGO.AddComponent<AudioSource>();
         audioSource.PlayOneShot(GetAudioClip(SFX));
-        Destroy(soundGO, 1f);
+        Destroy(soundGO, 1);
 
     }
 
